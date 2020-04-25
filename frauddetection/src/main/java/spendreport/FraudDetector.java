@@ -70,9 +70,9 @@ public class FraudDetector extends KeyedProcessFunction<Long, Transaction, Alert
             flagState.update(true);
 
             long timer = context.timerService().currentProcessingTime() + ONE_MINUTE;
-            context.timerService().registerProcessingTimeTimer(timer);
+            context.timerService().registerProcessingTimeTimer(timer); //一分钟后触发定时器
 
-            timerState.update(timer);
+            timerState.update(timer); //保存触发时间
         }
     }
 
